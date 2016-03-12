@@ -43,4 +43,12 @@ bool risingBistable(DLatch *latch, bool input) {
   return latch->out;
 }
 
+bool fallingBistable(DLatch *latch, bool input) {
+  updateDLatch(latch, input);
+
+  if (!latch->input && latch->inLast) latch->out = !latch->out;
+
+  return latch->out;
+}
+
 #endif
